@@ -17,8 +17,8 @@ app.post("/api/send-email", async (req, res) => {
       port: 465,
       secure: true,
       auth: {
-        user: "GreenYardCrimea@yandex.ru",
-        pass: "nogusocubfwdkuah",
+        user: process.env.EMAIL_ADRESS,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
@@ -26,8 +26,8 @@ app.post("/api/send-email", async (req, res) => {
       req.body;
 
     const mailOptions = {
-      from: "GreenYardCrimea@yandex.ru",
-      to: "GreenYardCrimea@yandex.ru",
+      from: process.env.EMAIL_ADRESS,
+      to: process.env.EMAIL_ADRESS,
       subject: "Новое бронирование",
       html: `
         <strong>От:</strong> ${name}<br/>
