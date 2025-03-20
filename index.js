@@ -3,6 +3,8 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+require("dotenv").config();
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -20,9 +22,9 @@ app.post("/api/send-email", async (req, res) => {
         user: process.env.EMAIL_ADRESS,
         pass: process.env.EMAIL_PASSWORD,
       },
-      tls: {
-        rejectUnauthorized: false,
-      },
+      // tls: {
+      //   rejectUnauthorized: false,
+      // },
     });
 
     const { name, email, phoneNumber, room, date, adults, children, message } =
