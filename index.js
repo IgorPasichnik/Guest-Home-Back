@@ -13,12 +13,15 @@ app.post("/api/send-email", async (req, res) => {
     console.log("Данные, полученные на сервере:", req.body);
 
     const transporter = nodemailer.createTransport({
-      service: "Yandex",
+      host: "smtp.yandex.ru",
       port: 465,
       secure: true,
       auth: {
         user: process.env.EMAIL_ADRESS,
         pass: process.env.EMAIL_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
 
