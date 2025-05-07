@@ -2,13 +2,17 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 require("dotenv").config();
 
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use("/images", express.static(path.join(__dirname, "uploads")));
 
 app.post("/api/send-email", async (req, res) => {
   try {
